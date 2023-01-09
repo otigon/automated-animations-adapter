@@ -27,10 +27,13 @@ export function removeTile(tileIdArray) {
     AutomatedAnimations.removeTile.executeAsGM("removeTile", tileIdArray)
 }
 
+function cleanSystemID() {
+    return game.system.id.replace(/\-/g, '');
+}
+
 // Registers System Settings to the Automated Animations menu
 Hooks.once('aa.registerSettings', function(settings, namespace, scope) {
-    const systemIdClean = game.system.id.replace(/\-/g, '');
-    systemSettings[systemIdClean].systemSettings(settings, namespace, scope);
+    systemSettings[cleanSystemID()].systemSettings(settings, namespace, scope);
 });
 
 // Stores deleted items to check when searching for an Item. Primary use is for expendable items to get the last one used.
@@ -39,8 +42,6 @@ Hooks.on("deleteItem", async (item) => {
 });
 
 Hooks.once('ready', async function() {
-    const systemIdClean = game.system.id.replace(/\-/g, '');
-
     /**
      * Officially Supported Systems:
      * DnD 5e
@@ -62,8 +63,9 @@ Hooks.once('ready', async function() {
      * Cyberpunk Red (Only for Attacks)
     */
 
-    // Sets the System Hooks to monitor for chat messages or other hooks depending on the system
-    systemSupport[systemIdClean] ? systemSupport[systemIdClean].systemHooks() : systemSupport.standard.systemHooks();
+    // Sets the System Hooks to monitor for chat messages or other hooks depending on the system.
+    // Falls back to a generic "standard" chat message monitoring that may or may not work
+    systemSupport[cleanSystemID()] ? systemSupport[cleanSystemID()].systemHooks() : systemSupport.standard.systemHooks();
 
     // Registers all hooks for handling Active Effect animations
     registerActiveEffectHooks();
