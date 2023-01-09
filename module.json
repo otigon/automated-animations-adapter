@@ -1,0 +1,58 @@
+{
+  "id": "automatedAnimationsAdapter",
+  "title": "Automated Animations - Adapter Module",
+  "description": "",
+  "version": "This is auto replaced",
+  "library": "false",
+  "manifestPlusVersion": "1.2.0",
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10,
+    "maximum": 11
+  },
+  "authors": [
+    {
+      "name": "Otigon",
+      "discord": "Otigon#2010"
+    }
+  ],
+  "relationships": {
+    "systems": [
+    ],
+    "requires": [
+      {
+        "id": "autoanimations",
+        "type": "module",
+        "manifest": "https://github.com/otigon/automated-jb2a-animations/releases/latest/download/module.json",
+        "compatibility": {
+          "verified": "4.2.0"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/module.js"
+  ],
+  "scripts": [
+    "scripts/lib/lib.js"
+  ],
+  "styles": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "url": "This is auto replaced",
+  "manifest": "This is auto replaced",
+  "download": "This is auto replaced",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "media": [
+    {
+      "type": "icon",
+      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+    }
+  ]
+}
