@@ -22,7 +22,6 @@ export function systemHooks() {
             if (!AnimationState || workflow.item?.hasAreaTarget || workflow.item?.hasAttack || workflow.item?.hasDamage) { return };
             useItem(getWorkflowData(workflow))
         });
-    
     } else {
         Hooks.on("dnd5e.rollAttack", async (item, roll) => {
             let playOnDamage = game.settings.get('autoanimations', 'playonDamageCore')

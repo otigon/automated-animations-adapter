@@ -2,7 +2,7 @@ import * as systemSettings              from "./settings/index.js";
 import * as systemSupport               from "./systemSupport/index.js";
 import { registerActiveEffectHooks }    from "./active-effects/handleActiveEffectHooks.js";
 
-const aaDeletedItems = new Map();
+export const aaDeletedItems = new Map();
 
 // Checks to see if animations are enabled in Automated Animations
 export const AnimationState = () => AutomatedAnimations.AnimationState.enabled;
@@ -65,7 +65,7 @@ Hooks.once('ready', async function() {
 
     // Sets the System Hooks to monitor for chat messages or other hooks depending on the system.
     // Falls back to a generic "standard" chat message monitoring that may or may not work
-    systemSupport[cleanSystemID()] ? systemSupport[cleanSystemID()].systemHooks() : systemSupport.standard.systemHooks();
+    systemSupport[cleanSystemID()] ? systemSupport[cleanSystemID()].systemHooks() : systemSupport.chatmessage.systemHooks();
 
     // Registers all hooks for handling Active Effect animations
     registerActiveEffectHooks();
