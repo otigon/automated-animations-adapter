@@ -1,12 +1,11 @@
 import { debug }            from "../constants.js";
 import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
-import { AnimationState }   from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
 export function systemHooks() {
     Hooks.on("wfrp4e:rollWeaponTest", async (data, info) => {
-        if (game.user.id !== info.user || !AnimationState.enabled) { return }
+        if (game.user.id !== info.user) { return }
         let compiledData = await getRequiredData({
             item: data.weapon,
             targets: compileTargets(data.context?.targets),
@@ -29,7 +28,7 @@ export function systemHooks() {
         runWarhammer(compiledData)
     });
     Hooks.on("wfrp4e:rollCastTest", async (data, info) => {
-        if (game.user.id !== info.user || !AnimationState.enabled) { return }
+        if (game.user.id !== info.user) { return }
         if (data.result.castOutcome != "success" && game.settings.get('autoanimations', 'castOnlyOnSuccess')) { return }
         let compiledData = await getRequiredData({
             item: data.spell,
@@ -41,7 +40,7 @@ export function systemHooks() {
         runWarhammer(compiledData)
     });
     Hooks.on("wfrp4e:rollTraitTest", async (data, info) => {
-        if (game.user.id !== info.user || !AnimationState.enabled) { return }
+        if (game.user.id !== info.user) { return }
         let compiledData = await getRequiredData({
             item: data.prayer,
             targets: compileTargets(data.context?.targets),
@@ -52,7 +51,7 @@ export function systemHooks() {
         runWarhammer(compiledData)
     });
     Hooks.on("wfrp4e:rollTest", async (data, info) => {
-        if (game.user.id !== info.user || !AnimationState.enabled) { return }
+        if (game.user.id !== info.user) { return }
         if (data.result.outcome != "success" && game.settings.get('autoanimations', 'castOnlyOnSuccess')) { return }
         if (!data.skill) { return }
         let compiledData = await getRequiredData({
@@ -66,7 +65,7 @@ export function systemHooks() {
     });
     
     Hooks.on("createMeasuredTemplate", async (template, data, userId) => {
-        if (userId !== game.user.id || !AnimationState.enabled) { return };
+        if (userId !== game.user.id) { return };
         if (!template.flags?.wfrp4e?.itemuuid) { return; } 
         const uuid = template.flags.wfrp4e.itemuuid;
         templateAnimation(await getRequiredData({itemUuid: uuid, templateData: template, workflow: template, isTemplate: true}))
@@ -76,7 +75,6 @@ export function systemHooks() {
 async function runWarhammer(data) {
     if (!data.item) { return; }
     const handler = await aaHandler(data)
-    if (!handler) { return; }
     router(handler);
 }
 
@@ -92,6 +90,5 @@ async function templateAnimation(input) {
         return;
     }
     const handler = await aaHandler(input)
-    if (!handler) { return; }
     router(handler)
 }

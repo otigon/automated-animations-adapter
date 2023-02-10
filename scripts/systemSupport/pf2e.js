@@ -1,7 +1,6 @@
 import { debug }            from "../constants.js";
 import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
-import { AnimationState }   from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
 
@@ -16,7 +15,7 @@ const PF2E_SIZE_TO_REACH = {
 
 export function systemHooks() {
     Hooks.on("createChatMessage", async (msg) => {
-        if (msg.user.id !== game.user.id || !AnimationState.enabled) { return };
+        if (msg.user.id !== game.user.id) { return };
         const playOnDmg = game.settings.get("autoanimations", "playonDamageCore")
 
         let compiledData = await getRequiredData({
@@ -40,7 +39,7 @@ export function systemHooks() {
         runPF2e(compiledData)
     });
     Hooks.on("createMeasuredTemplate", async (template, data, userId) => {
-        if (userId !== game.user.id || !AnimationState.enabled) { return };
+        if (userId !== game.user.id) { return };
         templateAnimation(await getRequiredData({
             itemUuid: template.flags?.pf2e?.origin?.uuid,
             templateData: template,
@@ -70,7 +69,6 @@ async function templateAnimation(input) {
     }
     
     const handler = await aaHandler(input)
-    if (!handler) { return;}
     router(handler)
 }
 
@@ -146,9 +144,7 @@ async function runPF2eSpells(data) {
         case "utility":
         case "save":
             if (spellHasAOE(item)) { return; }
-            if (itemHasDamage(item) && playOnDamage && msg.isDamageRoll) {
-                playPF2e(data)
-            } else if (!playOnDamage && !msg.isRoll) {
+            if (itemHasDamage(item) && msg.isDamageRoll) {
                 playPF2e(data)
             } else if (!itemHasDamage(item)) {
                 playPF2e(data)
@@ -188,7 +184,6 @@ async function playPF2e(input) {
     }
 
     const handler = await aaHandler(input)
-    if (!handler) { return; }
     router(handler);
 }
 /**

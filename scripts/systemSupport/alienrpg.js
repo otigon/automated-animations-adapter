@@ -1,11 +1,10 @@
 import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
-import { AnimationState }   from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 // WILL NEED REWORK AFTER THE V10 VERSION IS RELEASED
 export function systemHooks() {
     Hooks.on("createChatMessage", async (msg) => {
-        if (msg.user.id !== game.user.id || !AnimationState.enabled) { return };
+        if (msg.user.id !== game.user.id) { return };
 
         function extractItemId(content) {
             try {
@@ -29,6 +28,5 @@ export function systemHooks() {
 
 async function runAlienRPG(input) {
     const handler = aaHandler(input)
-    if (!handler) { return; }
     router(handler);
 }

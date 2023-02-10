@@ -1,11 +1,10 @@
 import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
-import { AnimationState }   from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
 export function systemHooks() {
     Hooks.on("createChatMessage", async (msg) => {
-        if (msg.user.id !== game.user.id || !AnimationState.enabled) { return };
+        if (msg.user.id !== game.user.id) { return };
 
         let compiledData = await getRequiredData({
             itemId: msg.flags?.itemID,
@@ -111,7 +110,6 @@ async function runCypherSystem(input) {
                 //const targets = Array.from(input.user.targets);
                 if (!input.item) { return; }
                 const handler = await aaHandler(input)
-                if (!handler) { return; }
                 router(handler);
             }
         }

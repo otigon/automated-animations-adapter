@@ -1,12 +1,10 @@
 import { debug }                                            from "../constants.js";
-import { router, aaHandler, AnimationState, compileMacro }  from "../module.js";
+import { router, aaHandler, compileMacro }  from "../module.js";
 
 export async function createRuleElementPF2e(item) {
     const aePF2eTypes = ['condition', 'effect']
     if (!aePF2eTypes.includes(item.type)) { return; }
     
-    if (!AnimationState) { return; }
-
     // Get the Item ID and Token it is on
     const itemId = item.id;
     const aeToken = canvas.tokens.placeables.find(token => token.actor?.items?.get(itemId) != null)

@@ -1,7 +1,6 @@
 import { debug }            from "../constants.js";
 import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
-import { AnimationState }   from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
 export function systemHooks() {
@@ -9,7 +8,7 @@ export function systemHooks() {
 }
 
 async function checkChatMessage(msg) {
-    if (msg.user.id !== game.user.id || !AnimationState.enabled) { return };
+    if (msg.user.id !== game.user.id) { return };
 
     let findData = funkyTest(msg);
     if (!findData.itemId) { 
@@ -29,32 +28,7 @@ async function checkChatMessage(msg) {
     if (!handler.item || !handler.sourceToken) { debug("No Item or Source Token", handler.item, handler.sourceToken); return;}
     router(handler);
 }
-/*
-function findItemId(msg) {
-    const systemId = game.system.id;
-    let itemId;
-    itemId = extractItemId(msg);
-    if (!itemId) {
-        const flags = msg.flags;
-        itemId = flags.itemId ??
-                flags.ItemId ??
-                flags[systemId]?.itemId ??
-                flags[systemId]?.ItemId ??
-                msg.rolls[0]?.options?.itemId
 
-    }
-    return itemId;
-}
-
-function extractItemId(msg) {
-    try {
-        return $(msg.content).attr("data-item-id");
-    } catch (exception) {
-        console.log("COULD NOT GET ITEM ID")
-        return null;
-    }
-}
-*/
 function funkyTest(msg) {
     //let findItemId = $(msg.content).find(`[data-item-id]`);
     let filterItemId = $(msg.content).filter(`[data-item-id]`);

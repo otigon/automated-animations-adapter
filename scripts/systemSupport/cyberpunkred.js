@@ -1,7 +1,6 @@
 import { debug }            from "../constants.js";
 import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
-import { AnimationState }   from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
 export function systemHooks() {
@@ -9,7 +8,7 @@ export function systemHooks() {
 }
 
 async function checkChatMessage(msg) {
-    if (msg.user.id !== game.user.id || !AnimationState.enabled) { return };
+    if (msg.user.id !== game.user.id) { return };
 
     let findData = funkyTest(msg)
 
@@ -30,8 +29,7 @@ async function checkChatMessage(msg) {
     let isAmmo = checkAmmo(compiledData);
     if (isAmmo) { compiledData.ammoItem = isAmmo }
     const handler = await aaHandler(compiledData)
-    if (!handler) { return; }
-    if (!handler.item || !handler.sourceToken) { debug("No Item or Source Token", handler.item, handler.sourceToken); return;}
+    if (!handler?.item || !handler?.sourceToken) { debug("No Item or Source Token", handler); return;}
     router(handler);
 }
 
@@ -48,8 +46,8 @@ function getFireModeOptions(data) {
      */
     let autofireEnabled = game.settings.get('autoanimations', 'autofire');
     if (!fireMode || !autofireEnabled) { return null; } else {
-        data.forceMiss = fireMode === "suppressive";
-        data.overrideRepeat = fireMode === "suppressive" || fireMode === "autofire" ? 10 : false;
+        data.miss = fireMode === "suppressive" ? true : void 0;
+        data.repeat = fireMode === "suppressive" || fireMode === "autofire" ? 10 : void 0;
     }
 }
 

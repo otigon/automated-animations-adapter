@@ -1,5 +1,5 @@
 import { debug }                                                        from "../constants.js";
-import { router, aaHandler, AnimationState, compileMacro, removeTile }  from "../module.js";
+import { router, aaHandler, compileMacro, removeTile }  from "../module.js";
 
 /**
  *
@@ -9,8 +9,6 @@ import { router, aaHandler, AnimationState, compileMacro, removeTile }  from "..
 export async function createActiveEffects(effect) {
 
     if (effect.disabled) { return; }
-
-    if (!AnimationState) { return; }
 
     // Gets the Token that the Active Effect is applied to
     const aeToken = effect.parent?.token || canvas.tokens.placeables.find(token => token.actor?.effects?.get(effect.id));

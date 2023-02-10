@@ -4,9 +4,6 @@ import { registerActiveEffectHooks }    from "./active-effects/handleActiveEffec
 
 export const aaDeletedItems = new Map();
 
-// Checks to see if animations are enabled in Automated Animations
-export const AnimationState = () => AutomatedAnimations.AnimationState.enabled;
-
 // Initializes the Automated Animations handler. False is returned if no Animation is matched
 export async function aaHandler(data) {
     return await AutomatedAnimations.WorkflowHandler.make(data);
@@ -22,7 +19,7 @@ export async function compileMacro(handler, flagData) {
     return AutomatedAnimations.DataSanitizer.compileMacro(handler, flagData)
 }
 
-// Uses Automated Animations to remove tiles through Socketlib
+// Uses Automated Animations to remove tiles via Socketlib
 export function removeTile(tileIdArray) {
     AutomatedAnimations.removeTile.executeAsGM("removeTile", tileIdArray)
 }
@@ -32,8 +29,9 @@ function cleanSystemID() {
 }
 
 // Registers System Settings to the Automated Animations menu
-Hooks.once('aa.registerSettings', function(settings, namespace, scope) {
-    systemSettings[cleanSystemID()].systemSettings(settings, namespace, scope);
+Hooks.once('aa.registerSettings', function(settings, namespace, scope, options) {
+    systemSettings[cleanSystemID()].systemSettings(settings, namespace, scope, options);
+    options.registerAll(settings, !game.user.isGM);
 });
 
 // Stores deleted items to check when searching for an Item. Primary use is for expendable items to get the last one used.
@@ -61,6 +59,8 @@ Hooks.once('ready', async function() {
      * Warhammer Fantasy RPG
      * Old School Essentials
      * Cyberpunk Red (Only for Attacks)
+     * The Witcher RPG
+     * TwoDSix
     */
 
     // Sets the System Hooks to monitor for chat messages or other hooks depending on the system.
