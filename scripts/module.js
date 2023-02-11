@@ -29,8 +29,8 @@ function cleanSystemID() {
 }
 
 // Registers System Settings to the Automated Animations menu
-Hooks.once('aa.registerSettings', function(settings, namespace, scope, options) {
-    systemSettings[cleanSystemID()].systemSettings(settings, namespace, scope, options);
+Hooks.once('aa.registerSettings', async function(settings, namespace, scope, options) {
+    await systemSettings[cleanSystemID()].systemSettings(settings, namespace, scope, options)
     options.registerAll(settings, !game.user.isGM);
 });
 

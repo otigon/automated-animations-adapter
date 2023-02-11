@@ -56,15 +56,6 @@ async function useItem(input) {
     const handler = await aaHandler(input)
     if (!handler?.item || !handler?.sourceToken) { console.log("Automated Animations: No Item or Source Token", handler); return;}
     router(handler)
-    /*
-        if (handler.isAura) {
-        trafficCop(handler);
-    } else {
-        if (item?.hasAreaTarget || item.hasAttack || item.hasDamage) { return; }
-        if (!handler.item || !handler.sourceToken) { console.log("Automated Animations: No Item or Source Token", handler.item, handler.sourceToken); return;}
-        trafficCop(handler)    
-    }
-    */
 }
 
 async function attack(input) {
@@ -96,7 +87,6 @@ async function templateAnimation(input) {
 }
 
 function checkAmmo(data) {
-    //const ammo = data.item?.flags?.autoanimations?.fromAmmo;
     const ammoType = data.item?.system?.consume?.type;
     data.ammoItem = ammoType === "ammo" ? data.token?.actor?.items?.get(data.item?.system?.consume?.target) : null;
 }

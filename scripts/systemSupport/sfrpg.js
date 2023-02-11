@@ -24,7 +24,7 @@ export function systemHooks() {
         if (item.type === 'feat') { return; }
 
         if (!item.hasAttack && !item.hasDamage) {
-            let findData = funkyTest(msg);
+            let findData = searchHTML(msg);
             let compiledData = await getRequiredData({itemId: findData.itemId, tokenId: findData.tokenId, actorId: findData.actorId, workflow: msg})
             runStarfinder(compiledData)
         }
@@ -53,7 +53,7 @@ async function runStarfinder(data) {
     router(handler);
 }
 
-function funkyTest(msg) {
+function searchHTML(msg) {
     //let findItemId = $(msg.content).find(`[data-item-id]`);
     let filterItemId = $(msg.content).filter(`[data-item-id]`);
     let itemId = filterItemId?.[0]?.attributes?.['data-item-id']?.value || filterItemId?.prevObject?.[0]?.attributes?.['data-item-id']?.value;

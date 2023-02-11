@@ -1,4 +1,4 @@
-export function systemSettings(settings, namespace, scope, options) {
+export async function systemSettings(settings, namespace, scope) {
     if (game.modules.get('midi-qol')?.active) {
         settings.push({
             namespace,

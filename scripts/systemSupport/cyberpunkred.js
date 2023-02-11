@@ -10,7 +10,7 @@ export function systemHooks() {
 async function checkChatMessage(msg) {
     if (msg.user.id !== game.user.id) { return };
 
-    let findData = funkyTest(msg)
+    let findData = searchHTML(msg)
 
     if (!findData.itemId) { 
         debug("Could not extract Item ID from Chat Message HTML")
@@ -63,7 +63,7 @@ function checkAmmo(data) {
     return ammoItem;
 }
 
-function funkyTest(msg) {
+function searchHTML(msg) {
     let findItemId = $(msg.content).find(`[data-item-id]`);
     let itemId = findItemId?.[0]?.attributes?.['data-item-id']?.value;
 

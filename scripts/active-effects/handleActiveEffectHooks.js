@@ -51,15 +51,6 @@ export function registerActiveEffectHooks() {
                     }
                 })
             })
-        case "dnd5e":
-            Hooks.on("updateActiveEffect", (data, toggle, other, userId) => {
-                if (game.settings.get("autoanimations", "disableAEAnimations")) {
-                    debug(`Active Effect Animations are Disabled`);
-                    return;
-                }
-                if (game.user.id !== userId) { return; }
-                toggleActiveEffects(data, toggle)
-            });
         case "pf1":
         case 'wfrp4e':
             Hooks.on("createActiveEffect", (effect, data, userId) => {
