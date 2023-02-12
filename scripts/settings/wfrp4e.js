@@ -4,8 +4,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'castOnlyOnSuccess',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.wfrp4eCastOnlyOnSuccess',
-            hint: 'automatedAnimationsAdapter.settings.wfrp4eCastOnlyOnSuccessHint',
+            name: 'autoanimationsAdapter.settings.wfrp4eCastOnlyOnSuccess',
+            hint: 'autoanimationsAdapter.settings.wfrp4eCastOnlyOnSuccessHint',
             scope: scope.world,
             type: Boolean,
             default: false,

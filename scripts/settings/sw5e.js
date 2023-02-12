@@ -5,8 +5,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'playonhit',
             folder: 'Midi-QOL',
             options: {
-                name: 'automatedAnimationsAdapter.settings.midionhit_name',
-                hint: 'automatedAnimationsAdapter.settings.midionhit_hint',
+                name: 'autoanimationsAdapter.settings.midionhit_name',
+                hint: 'autoanimationsAdapter.settings.midionhit_hint',
                 scope: scope.world,
                 type: Boolean,
                 default: false,
@@ -19,8 +19,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'playonmiss',
             folder: 'Midi-QOL',
             options: {
-                name: 'automatedAnimationsAdapter.settings.midionmiss_name',
-                hint: 'automatedAnimationsAdapter.settings.midionmiss_hint',
+                name: 'autoanimationsAdapter.settings.midionmiss_name',
+                hint: 'autoanimationsAdapter.settings.midionmiss_hint',
                 scope: scope.world,
                 type: Boolean,
                 default: false,
@@ -33,8 +33,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'playonDamage',
             folder: 'Midi-QOL',
             options: {
-                name: 'automatedAnimationsAdapter.settings.midiondmg_name',
-                hint: 'automatedAnimationsAdapter.settings.midiondmg_hint',
+                name: 'autoanimationsAdapter.settings.midiondmg_name',
+                hint: 'autoanimationsAdapter.settings.midiondmg_hint',
                 scope: scope.world,
                 type: Boolean,
                 default: false,
@@ -47,8 +47,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'EnableCritical',
             folder: 'Midi-QOL',
             options: {
-                name: 'automatedAnimationsAdapter.settings.crithit_name',
-                hint: 'automatedAnimationsAdapter.settings.crithit_hint',
+                name: 'autoanimationsAdapter.settings.crithit_name',
+                hint: 'autoanimationsAdapter.settings.crithit_hint',
                 scope: scope.world,
                 type: Boolean,
                 default: false,
@@ -61,7 +61,7 @@ export function systemSettings(settings, namespace, scope) {
             key: 'CriticalAnimation',
             folder: 'Midi-QOL',
             options: {
-                name: 'automatedAnimationsAdapter.settings.crithitAnim_name',
+                name: 'autoanimationsAdapter.settings.crithitAnim_name',
                 //name: 'Choose A File',
                 scope: scope.world,
                 config: true,
@@ -76,8 +76,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'EnableCriticalMiss',
             folder: 'Midi-QOL',
             options: {
-                name: 'automatedAnimationsAdapter.settings.critmiss_name',
-                hint: 'automatedAnimationsAdapter.settings.critmiss_hint',
+                name: 'autoanimationsAdapter.settings.critmiss_name',
+                hint: 'autoanimationsAdapter.settings.critmiss_hint',
                 scope: scope.world,
                 type: Boolean,
                 default: false,
@@ -90,7 +90,7 @@ export function systemSettings(settings, namespace, scope) {
             key: 'CriticalMissAnimation',
             folder: 'Midi-QOL',
             options: {
-                name: 'automatedAnimationsAdapter.settings.critmissAnim_name',
+                name: 'autoanimationsAdapter.settings.critmissAnim_name',
                 scope: scope.world,
                 config: true,
                 type: String,
@@ -104,8 +104,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'playonDamageCore',
             folder: game.system.title || game.system.name,
             options: {
-                name: 'automatedAnimationsAdapter.settings.coreondmg_name',
-                hint: 'automatedAnimationsAdapter.settings.coreondmg_hint',
+                name: 'autoanimationsAdapter.settings.coreondmg_name',
+                hint: 'autoanimationsAdapter.settings.coreondmg_hint',
                 scope: scope.world,
                 type: Boolean,
                 default: false,
@@ -117,8 +117,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'EnableCritical',
             folder: game.system.title || game.system.name,
             options: {
-               name: 'autoanimations.settings.crithit_name',
-               hint: 'autoanimations.settings.crithit_hint',
+               name: 'autoanimationsAdapter.settings.crithit_name',
+               hint: 'autoanimationsAdapter.settings.crithit_hint',
                scope: scope.world,
                type: Boolean,
                default: false,
@@ -131,7 +131,7 @@ export function systemSettings(settings, namespace, scope) {
             key: 'CriticalAnimation',
             folder: game.system.title || game.system.name,
             options: {
-               name: 'autoanimations.settings.crithitAnim_name',
+               name: 'autoanimationsAdapter.settings.crithitAnim_name',
                //name: 'Choose A File',
                scope: scope.world,
                config: true,
@@ -146,8 +146,8 @@ export function systemSettings(settings, namespace, scope) {
             key: 'EnableCriticalMiss',
             folder: game.system.title || game.system.name,
             options: {
-               name: 'autoanimations.settings.critmiss_name',
-               hint: 'autoanimations.settings.critmiss_hint',
+               name: 'autoanimationsAdapter.settings.critmiss_name',
+               hint: 'autoanimationsAdapter.settings.critmiss_hint',
                scope: scope.world,
                type: Boolean,
                default: false,
@@ -160,7 +160,7 @@ export function systemSettings(settings, namespace, scope) {
             key: 'CriticalMissAnimation',
             folder: game.system.title || game.system.name,
             options: {
-               name: 'autoanimations.settings.critmissAnim_name',
+               name: 'autoanimationsAdapter.settings.critmissAnim_name',
                scope: scope.world,
                config: true,
                type: String,

@@ -4,8 +4,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'disableAEAnimations',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.disableAEAnimations',
-            hint: 'automatedAnimationsAdapter.settings.disableAEAnimationsHint',
+            name: 'autoanimationsAdapter.settings.disableAEAnimations',
+            hint: 'autoanimationsAdapter.settings.disableAEAnimationsHint',
             scope: scope.world,
             type: Boolean,
             default: false,

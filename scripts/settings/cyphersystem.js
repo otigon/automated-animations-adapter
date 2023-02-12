@@ -4,8 +4,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'EnableCritical',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.cypherCrit_name',
-            hint: 'automatedAnimationsAdapter.settings.cypherCrit_hint',
+            name: 'autoanimationsAdapter.settings.cypherCrit_name',
+            hint: 'autoanimationsAdapter.settings.cypherCrit_hint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -18,7 +18,7 @@ export function systemSettings(settings, namespace, scope) {
         key: 'CriticalAnimation',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.CriticalAnimation',
+            name: 'autoanimationsAdapter.settings.CriticalAnimation',
             scope: scope.world,
             type: String,
             config: true,
@@ -32,8 +32,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'EnableFumble',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.cypherFumble_name',
-            hint: 'automatedAnimationsAdapter.settings.cypherFumble_hint',
+            name: 'autoanimationsAdapter.settings.cypherFumble_name',
+            hint: 'autoanimationsAdapter.settings.cypherFumble_hint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -46,7 +46,7 @@ export function systemSettings(settings, namespace, scope) {
         key: 'FumbleAnimation',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.cypherFumbleAnim_name',
+            name: 'autoanimationsAdapter.settings.cypherFumbleAnim_name',
             scope: scope.world,
             type: String,
             config: true,
@@ -60,8 +60,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'EnableOnRecoveryRoll',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.recovery_name',
-            hint: 'automatedAnimationsAdapter.settings.recovery_hint',
+            name: 'autoanimationsAdapter.settings.recovery_name',
+            hint: 'autoanimationsAdapter.settings.recovery_hint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -74,7 +74,7 @@ export function systemSettings(settings, namespace, scope) {
         key: 'RecoveryRollAnimation',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.recoveryAnim_name',
+            name: 'autoanimationsAdapter.settings.recoveryAnim_name',
             scope: scope.world,
             type: String,
             config: true,
@@ -88,8 +88,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'EnableOnMightRoll',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.mightroll_name',
-            hint: 'automatedAnimationsAdapter.settings.mightroll_hint',
+            name: 'autoanimationsAdapter.settings.mightroll_name',
+            hint: 'autoanimationsAdapter.settings.mightroll_hint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -102,7 +102,7 @@ export function systemSettings(settings, namespace, scope) {
         key: 'MightRollAnimation',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.mightRollAnim_name',
+            name: 'autoanimationsAdapter.settings.mightRollAnim_name',
             scope: scope.world,
             type: String,
             config: true,
@@ -116,8 +116,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'EnableOnSpeedRoll',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.speedroll_name',
-            hint: 'automatedAnimationsAdapter.settings.speedroll_hint',
+            name: 'autoanimationsAdapter.settings.speedroll_name',
+            hint: 'autoanimationsAdapter.settings.speedroll_hint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -130,7 +130,7 @@ export function systemSettings(settings, namespace, scope) {
         key: 'SpeedRollAnimation',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.speedRollAnim_name',
+            name: 'autoanimationsAdapter.settings.speedRollAnim_name',
             scope: scope.world,
             type: String,
             config: true,
@@ -144,8 +144,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'EnableOnIntellecRoll',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.intellectroll_name',
-            hint: 'automatedAnimationsAdapter.settings.intellectroll_hint',
+            name: 'autoanimationsAdapter.settings.intellectroll_name',
+            hint: 'autoanimationsAdapter.settings.intellectroll_hint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -158,7 +158,7 @@ export function systemSettings(settings, namespace, scope) {
         key: 'IntellectRollAnimation',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.intellectRollAnim_name',
+            name: 'autoanimationsAdapter.settings.intellectRollAnim_name',
             scope: scope.world,
             type: String,
             config: true,

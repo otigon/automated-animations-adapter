@@ -29,8 +29,8 @@ settings.push({
     key: 'playOnDamage',
     folder: game.system.title || game.system.name,
     options: { // Options for the setting
-        name: 'autoanimations.settings.crithit_name', // Setting Name
-        hint: 'autoanimations.settings.crithit_hint', // Setting Hint
+        name: 'autoanimationsAdapter.settings.crithit_name', // Setting Name
+        hint: 'autoanimationsAdapter.settings.crithit_hint', // Setting Hint
         scope: scope.world,   // SCOPE: scope.world or scope.client
         type: Boolean,  // Type: Boolean, String 
         default: false,

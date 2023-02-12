@@ -4,8 +4,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'playonDamageCore',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.coreondmg_name',
-            hint: 'automatedAnimationsAdapter.settings.coreondmg_hint',
+            name: 'autoanimationsAdapter.settings.coreondmg_name',
+            hint: 'autoanimationsAdapter.settings.coreondmg_hint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -18,7 +18,7 @@ export function systemSettings(settings, namespace, scope) {
         key: 'playonmiss',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.midionmiss_name',
+            name: 'autoanimationsAdapter.settings.midionmiss_name',
             hint: 'Requires Animations to be played on Attack rolls',
             scope: scope.world,
             type: Boolean,
@@ -32,8 +32,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'disableNestedEffects',
         folder: game.system.title || game.system.name,
         options: {
-            name: 'automatedAnimationsAdapter.settings.disableNested',
-            hint: 'automatedAnimationsAdapter.settings.disableNestedHint',
+            name: 'autoanimationsAdapter.settings.disableNested',
+            hint: 'autoanimationsAdapter.settings.disableNestedHint',
             scope: scope.world,
             type: Boolean,
             default: false,
@@ -46,8 +46,8 @@ export function systemSettings(settings, namespace, scope) {
         key: 'disableGrantedAuraEffects',
         folder: game.system.title || game.system.name,
         options: {
-           name: 'autoanimations.settings.disableGrantedAura',
-           hint: 'autoanimations.settings.disableGrantedAuraHint',
+           name: 'autoanimationsAdapter.settings.disableGrantedAura',
+           hint: 'autoanimationsAdapter.settings.disableGrantedAuraHint',
            scope: scope.world,
            type: Boolean,
            default: false,

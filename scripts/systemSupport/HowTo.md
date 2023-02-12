@@ -27,4 +27,12 @@ If an animation is matched, you can then start the Automated Animations workflow
   For Animations to play for items that have an AOE effect and use Foundry templates, this may require adding support inside Automated Animations. Reach out to the Automated Animations developer for guidance on this if needed.  Systems such as ``DnD 5e`` and ``PF2e`` pass the ``Item ID`` or ``Item UUID`` inside the flags for the template. This is the best way to play Template animations, as you can then register the ``createMeasuredTemplate`` Hook specfically to play those on template placement on the game canvas.  
     
 ## **Active Effects**  
-Active Effects in Autoamted Animations are handled from the ``scripts`` - ``active-effects`` - ``handleActiveEffectHooks.js`` file. This shouldn't need any specific things added if the system uses the core Foundry Active Effect workflow (Everything will be registered under the default switch settings already).
+Active Effects in Autoamted Animations are handled from the ``scripts`` - ``active-effects`` - ``handleActiveEffectHooks.js`` file. This shouldn't need any specific things added if the system uses the core Foundry Active Effect workflow (Everything will be registered under the default switch settings already).  
+  
+## **Structure for registering Hooks:**  
+```js
+export function systemHooks() {
+    // Register the createChatMessage Hook here, or your System Hooks if provided
+}
+
+```

@@ -1,5 +1,5 @@
 {
-    "automatedAnimationsAdapter": {
+    "autoanimationsAdapter": {
         "settings": {
             "initpopup_name":"Disable the Startup Window Popup",
             "initpopup_hint":"Checking this box will prevent the Popup Window from showing",
