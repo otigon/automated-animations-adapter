@@ -7,13 +7,13 @@ import { getRequiredData }  from "./getRequiredData.js";
 export function systemHooks() {
     if (game.modules.get("midi-qol")?.active) {
         Hooks.on("midi-qol.AttackRollComplete", (workflow) => {
-            let playOnDamage = game.settings.get('autoanimations', 'playonDamage');
-            if (workflow.item?.hasAreaTarget || (workflow.item?.hasDamage && playOnDamage)) { return };
+            let playOn = game.settings.get('autoanimations', 'playAnimationOn');
+            if (workflow.item?.hasAreaTarget || (workflow.item?.hasDamage && playOn === 'damage')) { return };
             attack(getWorkflowData(workflow)); criticalCheck(workflow)
         });
         Hooks.on("midi-qol.DamageRollComplete", (workflow) => { 
-            let playOnDamage = game.settings.get('autoanimations', 'playonDamage');
-            if (workflow.item?.hasAreaTarget || (!playOnDamage && workflow.item?.hasAttack)) { return };
+            let playOn = game.settings.get('autoanimations', 'playAnimationOn');
+            if (workflow.item?.hasAreaTarget || (workflow.item?.hasAttack && playOn === 'attack')) { return };
             damage(getWorkflowData(workflow)) 
         });
         // Items with no Attack/Damage
@@ -23,17 +23,19 @@ export function systemHooks() {
         });
     } else {
         Hooks.on("dnd5e.rollAttack", async (item, roll) => {
-            let playOnDamage = game.settings.get('autoanimations', 'playonDamageCore')
-            if (item.hasAreaTarget || (item.hasDamage && playOnDamage)) { return; }   
+            console.log(item)
+            let playOn = game.settings.get('autoanimations', 'playAnimationOn');
+            if (item.hasAreaTarget || (item.hasDamage && playOn === 'damage') || playOn === 'onUse') { return; }   
             attack(await getRequiredData({item, actor: item.actor, workflow: item}))
         })
         Hooks.on("dnd5e.rollDamage", async (item, roll) => {
-            let playOnDamage = game.settings.get('autoanimations', 'playonDamageCore')
-            if (item.hasAreaTarget || (item.hasAttack && !playOnDamage)) { return; }
+            let playOn = game.settings.get('autoanimations', 'playAnimationOn')
+            if (item.hasAreaTarget || (item.hasAttack && playOn === 'attack') || playOn === 'onUse') { return; }
             damage(await getRequiredData({item, actor: item.actor, workflow: item}))
         })
         Hooks.on('dnd5e.useItem', async (item, config, options) => {
-            if (item?.hasAreaTarget || item.hasAttack || item.hasDamage) { return; }
+            let playOn = game.settings.get('autoanimations', 'playAnimationOn')
+            if (item?.hasAreaTarget || playOn !== 'onUse' && (item.hasAttack || item.hasDamage)) { return; }
             useItem(await getRequiredData({item, actor: item.actor, workflow: item}))
         })
     }

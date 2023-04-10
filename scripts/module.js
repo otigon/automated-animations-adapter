@@ -42,25 +42,29 @@ Hooks.on("deleteItem", async (item) => {
 Hooks.once('ready', async function() {
     /**
      * Officially Supported Systems:
-     * DnD 5e
-     * Pathfinder 2e
-     * Pathfinder 1
-     * Advanced 5e
      * Alien RPG
+     * Cyberpunk Red (Only for Attacks)
      * CypherSystem
+     * Dark Heresy 2e
      * DnD 3.5
-     * Dungeon Crawl Clasics
-     * Shadow of the Demonlord
+     * DnD 5e
+     * Dungeon Crawl Classics
+     * Dungeon Slayers 4
      * Forbidden Lands
+     * Level Up: Advanced 5e
+     * Old School Essentials
+     * Open D6
+     * Shadow of the Demonlord
+     * Shadowrun 5e
+     * Pathfinder 1e
+     * Pathfinder 2e
      * Starfinder RPG
      * Star Wars FFG
      * Star Wars 5e
      * SWADE
-     * Warhammer Fantasy RPG
-     * Old School Essentials
-     * Cyberpunk Red (Only for Attacks)
      * The Witcher RPG
      * TwoDSix
+     * Warhammer Fantasy RPG
     */
 
     // Sets the System Hooks to monitor for chat messages or other hooks depending on the system.
