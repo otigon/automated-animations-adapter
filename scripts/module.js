@@ -19,6 +19,11 @@ export async function compileMacro(handler, flagData) {
     return AutomatedAnimations.DataSanitizer.compileMacro(handler, flagData)
 }
 
+// Compile Animation data for workflow
+export async function compileAnimationData(handler, data) {
+    return await AutomatedAnimations.DataSanitizer._getAnimationData(handler, data)
+}
+
 // Uses Automated Animations to remove tiles via Socketlib
 export function removeTile(tileIdArray) {
     AutomatedAnimations.removeTile.executeAsGM("removeTile", tileIdArray)
