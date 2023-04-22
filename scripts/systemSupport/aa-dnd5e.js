@@ -22,9 +22,6 @@ export function systemHooks() {
             useItem(getWorkflowData(workflow))
         });
     } else {
-        Hooks.on("dnd5e.rollAttack", async (item, roll) => { 
-            criticalCheck(roll, item);
-        })
         Hooks.on("dnd5e.preRollAttack", async (item, options) => {
             let spellLevel = options.spellLevel ?? void 0;
             Hooks.once("dnd5e.rollAttack", async (item, roll) => {
