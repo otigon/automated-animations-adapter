@@ -22,26 +22,35 @@ export function systemHooks() {
             useItem(getWorkflowData(workflow))
         });
     } else {
-        Hooks.on("dnd5e.rollAttack", async (item, roll) => {
-            console.log(item)
-            let playOn = game.settings.get('autoanimations', 'playAnimationOn');
-            if (item.hasAreaTarget || (item.hasDamage && playOn === 'damage') || playOn === 'onUse') { return; }   
-            attack(await getRequiredData({item, actor: item.actor, workflow: item}))
+        Hooks.on("dnd5e.rollAttack", async (item, roll) => { 
+            criticalCheck(roll, item);
+        })
+        Hooks.on("dnd5e.preRollAttack", async (item, options) => {
+            let spellLevel = options.spellLevel ?? void 0;
+            Hooks.once("dnd5e.rollAttack", async (item, roll) => {
+                criticalCheck(roll, item);
+                let playOnDamage = game.settings.get('autoanimations', 'playonDamageCore')
+                if (item.hasAreaTarget || (item.hasDamage && playOnDamage)) { return; }   
+                attack(await getRequiredData({item, actor: item.actor, workflow: item, rollAttackHook: {item, roll}, spellLevel}))    
+            })
         })
         Hooks.on("dnd5e.rollDamage", async (item, roll) => {
-            let playOn = game.settings.get('autoanimations', 'playAnimationOn')
-            if (item.hasAreaTarget || (item.hasAttack && playOn === 'attack') || playOn === 'onUse') { return; }
-            damage(await getRequiredData({item, actor: item.actor, workflow: item}))
+            let playOnDamage = game.settings.get('autoanimations', 'playonDamageCore')
+            if (item.hasAreaTarget || (item.hasAttack && !playOnDamage)) { return; }
+            damage(await getRequiredData({item, actor: item.actor, workflow: item, rollDamageHook: {item, roll}, spellLevel: roll?.data?.item?.level ?? void 0}))
         })
         Hooks.on('dnd5e.useItem', async (item, config, options) => {
-            let playOn = game.settings.get('autoanimations', 'playAnimationOn')
-            if (item?.hasAreaTarget || playOn !== 'onUse' && (item.hasAttack || item.hasDamage)) { return; }
-            useItem(await getRequiredData({item, actor: item.actor, workflow: item}))
+            if (item?.hasAreaTarget || item.hasAttack || item.hasDamage) { return; }
+            useItem(await getRequiredData({item, actor: item.actor, workflow: item, useItemHook: {item, config, options}, spellLevel: options?.flags?.dnd5e?.use?.spellLevel || void 0}))
         })
     }
     Hooks.on("createMeasuredTemplate", async (template, data, userId) => {
         if (userId !== game.user.id) { return };
-        templateAnimation(await getRequiredData({itemUuid: template.flags?.dnd5e?.origin, templateData: template, workflow: template, isTemplate: true}))
+        let spellLevel = void 0;
+        Hooks.once("dnd5e.useItem", async (item, data, config) => {
+            spellLevel = config?.flags?.dnd5e?.use?.spellLevel ?? void 0;
+            templateAnimation(await getRequiredData({itemUuid: template.flags?.dnd5e?.origin, templateData: template, workflow: template, isTemplate: true, spellLevel}))
+        })
     })
 }
 
