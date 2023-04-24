@@ -1,5 +1,4 @@
 import { router }           from "../module.js";
-import { workflowRouter }   from "../workflowRouter/animationRouter.js";
 import { aaHandler }        from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
@@ -36,5 +35,5 @@ export function systemHooks() {
 
 async function runA5e(input) {
     const handler = await aaHandler(input)
-    workflowRouter(handler);
+    router(handler);
 }

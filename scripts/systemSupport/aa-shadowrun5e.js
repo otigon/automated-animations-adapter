@@ -2,9 +2,6 @@ import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
-//import { AnimationState }   from "../AnimationState.js";
-import { getRequiredData }  from "./getRequiredData.js";
-
 export function systemHooks() {
     Hooks.on("createChatMessage", async (msg) => {checkChatMessage(msg) });
 }
@@ -26,7 +23,7 @@ const TEST = {
     - For spells, we use the same trick with the magic school as a fallback
  */
 async function checkChatMessage(msg) {
-    if (msg.user.id !== game.user.id /*|| !AnimationState.enabled*/) { 
+    if (msg.user.id !== game.user.id) { 
         return;
     }
 

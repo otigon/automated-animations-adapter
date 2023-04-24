@@ -1,5 +1,5 @@
 import { debug }            from "../constants.js";
-import { workflowRouter }   from "../workflowRouter/animationRouter.js";
+import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
@@ -63,7 +63,7 @@ async function useItem(input) {
     debug("Item used, checking for animations")
     const handler = await aaHandler(input)
     if (!handler?.item || !handler?.sourceToken) { console.log("Automated Animations: No Item or Source Token", handler); return;}
-    workflowRouter(handler)
+    router(handler)
 }
 
 async function attack(input) {
@@ -72,7 +72,7 @@ async function attack(input) {
     debug("Attack rolled, checking for animations");
     const handler = await aaHandler(input)
     if (!handler?.item || !handler?.sourceToken) { console.log("Automated Animations: No Item or Source Token", handler); return;}
-    workflowRouter(handler)
+    router(handler)
 }
 
 async function damage(input) {
@@ -81,7 +81,7 @@ async function damage(input) {
     debug("Damage rolled, checking for animations")
     const handler = await aaHandler(input)
     if (!handler?.item || !handler?.sourceToken) { console.log("Automated Animations: No Item or Source Token", handler); return;}
-    workflowRouter(handler)
+    router(handler)
 }
 
 async function templateAnimation(input) {
@@ -91,7 +91,7 @@ async function templateAnimation(input) {
         return;
     }
     const handler = await aaHandler(input)
-    workflowRouter(handler)
+    router(handler)
 }
 
 function checkAmmo(data) {

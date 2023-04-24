@@ -6,12 +6,9 @@ import { router }           from "../module.js";
 import { aaHandler }        from "../module.js";
 import { getRequiredData }  from "./getRequiredData.js";
 
-//import { AnimationState }   from "../AnimationState.js";
-import { getRequiredData }  from "./getRequiredData.js";
-
 export function systemHooks() {
     Hooks.on("createChatMessage", async (msg) => {
-        if (msg.user.id !== game.user.id /*|| !AnimationState.enabled*/) { return };
+        if (msg.user.id !== game.user.id) { return };
 
         // Was this from an actor-controlled vehicle?
         let tokenId = '';
