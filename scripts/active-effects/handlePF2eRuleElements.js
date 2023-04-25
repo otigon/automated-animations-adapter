@@ -1,5 +1,4 @@
-import { debug }                                            from "../constants.js";
-import { router, aaHandler, compileMacro }  from "../module.js";
+import { router, aaHandler, compileMacro, debug }  from "../module.js";
 
 export async function createRuleElementPF2e(item) {
     const aePF2eTypes = ['condition', 'effect']

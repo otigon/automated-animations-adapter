@@ -1,7 +1,5 @@
-import { debug }            from "../constants.js";
-import { router }           from "../module.js";
-import { aaHandler }        from "../module.js";
-import { getRequiredData }  from "./getRequiredData.js";
+import { aaHandler, router, debug } from "../module.js";
+import { getRequiredData }          from "./getRequiredData.js";
 
 
 const PF2E_SIZE_TO_REACH = {

@@ -1,7 +1,5 @@
-import { debug }            from "../constants.js";
-import { router }           from "../module.js";
-import { aaHandler }        from "../module.js";
-import { getRequiredData }  from "./getRequiredData.js";
+import { aaHandler, router, debug } from "../module.js";
+import { getRequiredData }          from "./getRequiredData.js";
 
 export function systemHooks() {
     Hooks.on("createChatMessage", async (msg) => {checkChatMessage(msg) });

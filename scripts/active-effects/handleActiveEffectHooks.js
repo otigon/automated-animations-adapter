@@ -1,7 +1,6 @@
 import { createActiveEffects, deleteActiveEffects, checkConcentration, toggleActiveEffects }    from "./handleActiveEffects.js";
 import { createRuleElementPF2e, deleteRuleElementPF2e }                                         from "./handlePF2eRuleElements.js";
-import { aaHandler }                                                                            from "../module.js";
-import { debug }                                                                                from "../constants.js";
+import { aaHandler, debug }                                                                     from "../module.js";
 
 export function registerActiveEffectHooks() {
     switch (game.system.id) {

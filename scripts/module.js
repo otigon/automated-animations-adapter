@@ -4,12 +4,17 @@ import { registerActiveEffectHooks }    from "./active-effects/handleActiveEffec
 
 export const aaDeletedItems = new Map();
 
+export function debug(...args) {
+    if (game.settings.get("autoanimations", "debug")) {
+        console.log(`DEBUG | Automated Animations Adapter |`, ...args);
+    }
+}
 // Initializes the Automated Animations handler. False is returned if no Animation is matched
 export async function aaHandler(data) {
     return await AutomatedAnimations.WorkflowHandler.make(data);
 }
 
-// Sends the handler to the Automated Animations router function to start the animation process
+// Sends the Handler to the Automated Animations router function to start the animation process
 export function router(handler) {
     AutomatedAnimations.Router(handler);
 }
@@ -17,11 +22,6 @@ export function router(handler) {
 // Compiles macro data
 export async function compileMacro(handler, flagData) {
     return AutomatedAnimations.DataSanitizer.compileMacro(handler, flagData)
-}
-
-// Compile Animation data for workflow
-export async function compileAnimationData(handler, data) {
-    return await AutomatedAnimations.DataSanitizer._getAnimationData(handler, data)
 }
 
 // Uses Automated Animations to remove tiles via Socketlib
